@@ -1,0 +1,68 @@
+<!-- <app-todo-card 
+    *ngFor="let todo of todos$ | async;"
+    [todo]="todo"
+></app-todo-card> -->
+
+<div class="wrapper">
+    <kendo-tabstrip [tabAlignment]="'center'">
+        <kendo-tabstrip-tab >
+            <ng-template kendoTabTitle>
+                <span class="tab-title">Pending</span>
+            </ng-template>
+            <ng-template kendoTabContent>
+                <div class="content">
+                    <app-todo-card 
+                        *ngFor="let todo of pendingTodos$ | async;"
+                        [todo]="todo"
+                        (editTodo)="onEditTodo($event)"
+                    ></app-todo-card>
+                </div>
+            </ng-template>
+        </kendo-tabstrip-tab>
+
+        <kendo-tabstrip-tab [selected]="true">
+            <ng-template kendoTabTitle>
+                <span class="tab-title">In Progress</span>
+            </ng-template>            
+            <ng-template kendoTabContent>
+                <div class="content">
+                    <app-todo-card 
+                        *ngFor="let todo of inProgressTodos$ | async;"
+                        [todo]="todo"
+                        (editTodo)="onEditTodo($event)"
+                    ></app-todo-card>
+                </div>
+            </ng-template>
+        </kendo-tabstrip-tab>
+
+        <kendo-tabstrip-tab>
+            <ng-template kendoTabTitle>
+                <span class="tab-title">Done</span>
+            </ng-template>            
+            <ng-template kendoTabContent>
+                <div class="content">
+                    <app-todo-card 
+                        *ngFor="let todo of doneTodos$ | async;"
+                        [todo]="todo"
+                        (editTodo)="onEditTodo($event)"
+                    ></app-todo-card>
+                </div>
+            </ng-template>
+        </kendo-tabstrip-tab>
+    </kendo-tabstrip>
+</div>
+
+<kendo-dialog
+    title="Edit Todo"
+    *ngIf="dialogOpened"
+    (close)="closeDialog()"
+    [minWidth]="250"
+    [width]="450"
+>
+    <div class="dialog-form-wrapper">
+        <app-edit-todo-form
+            [todo]="todoToEdit"
+            (todoUpdated)="closeDialog()"
+        ></app-edit-todo-form>
+    </div>
+</kendo-dialog>

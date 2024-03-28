@@ -1,0 +1,20 @@
+<kendo-card>
+  <kendo-card-header>
+    <h1 kendoCardTitle>{{ todo.context }}</h1>
+
+  </kendo-card-header>
+  <kendo-card-body>
+    <div class="card-actions">
+        <kendo-dropdownlist
+            [data]="stateOptions"
+            [value]="selectedState"
+            (valueChange)="onStateChange($event)"
+            textField="text"
+            valueField="value"
+        >
+        </kendo-dropdownlist>
+        <button kendoButton (click)="onEditClick()" [svgIcon]="pencilIcon"></button>
+        <button kendoButton (click)="onCloseClick()" [svgIcon]="xIcon"></button>
+    </div>
+  </kendo-card-body>
+</kendo-card>

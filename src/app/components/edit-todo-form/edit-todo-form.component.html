@@ -1,0 +1,43 @@
+<form [formGroup]="formGroup" class="k-form k-form-md" (submit)="onSubmit()">
+    <fieldset class="k-form-fieldset">
+        <kendo-formfield>
+            <kendo-label
+                labelClassCss="k-form-label"
+                [for]="context"
+                text="Context"
+            >
+            </kendo-label>
+            <kendo-textbox
+                formControlName="context"
+                #context
+                required
+            ></kendo-textbox>
+            <kendo-formhint>Todo's Context</kendo-formhint>
+            <kendo-formerror>Error: Context is required</kendo-formerror>
+        </kendo-formfield>
+
+        <kendo-formfield>
+            <kendo-label
+                labelClassCss="k-form-label"
+                [for]="state"
+                text="State"
+            >
+            </kendo-label>
+            <kendo-dropdownlist
+                formControlName="state"
+                [valuePrimitive]="true"
+                [data]="stateOptions"
+                #state
+                textField="text"
+                valueField="value"
+                required
+            ></kendo-dropdownlist>
+            <kendo-formhint>Todo's State</kendo-formhint>
+            <kendo-formerror>Error: State is required</kendo-formerror>
+        </kendo-formfield>
+
+        <div class="k-form-buttons">
+            <button kendoButton type="submit">Edit Todo</button>
+        </div>
+    </fieldset>
+</form>

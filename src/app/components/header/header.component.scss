@@ -1,0 +1,36 @@
+
+.appbar-container {
+    display: flex;
+    justify-content: center;
+    padding: 28px 0px 28px 0px;
+    width: 100%;
+}
+
+.menu-item {
+    font-size: 2rem;
+    padding: 0px 10px;
+    // text-decoration: none;
+    
+    &:current {
+        color: aqua;
+    }
+}
+// .appbar-section {
+
+//     padding: 0 80px;
+// }
+
+ul {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+li {
+    margin: 0 9px;
+}
+li:hover {
+    cursor: pointer;
+    color: #d6002f;
+}
